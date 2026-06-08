@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究生工作记录</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+    <div class="app">
+        <!-- 侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>工作记录</h1>
+                <button class="btn-icon" id="btn-new" title="新建记录">+ 新建</button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="search-input" placeholder="搜索标题或内容...">
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-item active" data-category="">
+                        <span>全部记录</span>
+                        <span class="badge" id="badge-all">0</span>
+                    </div>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">分类</div>
+                    <div id="category-list"></div>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">标签</div>
+                    <div id="tag-cloud" class="tag-cloud"></div>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="nav-section">
+                    <div class="nav-section-title">数据</div>
+                    <div class="nav-item" id="btn-export-json">
+                        <span>导出 JSON</span>
+                    </div>
+                    <div class="nav-item" id="btn-export-md">
+                        <span>导出 Markdown</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main" id="main-content">
+            <!-- 统计仪表盘 -->
+            <div class="dashboard" id="dashboard-view">
+                <h2>概览</h2>
+                <div class="stats-cards" id="stats-cards"></div>
+                <div class="stats-section">
+                    <h3>按月统计</h3>
+                    <div id="month-chart" class="month-chart"></div>
+                </div>
+            </div>
+
+            <!-- 记录列表 -->
+            <div class="record-list" id="record-list-view" style="display:none">
+                <div class="list-header">
+                    <h2 id="list-title">全部记录</h2>
+                </div>
+                <div id="record-list" class="records"></div>
+                <div id="empty-state" class="empty-state" style="display:none">
+                    <p>还没有记录</p>
+                    <button class="btn btn-primary" id="btn-new-empty">创建第一条记录</button>
+                </div>
+            </div>
+
+            <!-- 记录详情 -->
+            <div class="record-detail" id="record-detail-view" style="display:none">
+                <div class="detail-header">
+                    <button class="btn btn-ghost" id="btn-back">← 返回</button>
+                    <div class="detail-actions">
+                        <button class="btn btn-ghost" id="btn-edit">编辑</button>
+                        <button class="btn btn-danger" id="btn-delete">删除</button>
+                    </div>
+                </div>
+                <div id="record-detail"></div>
+            </div>
+
+            <!-- 编辑/新建表单 -->
+            <div class="record-form" id="record-form-view" style="display:none">
+                <div class="form-header">
+                    <h2 id="form-title">新建记录</h2>
+                    <div class="form-actions">
+                        <button class="btn btn-ghost" id="btn-cancel">取消</button>
+                        <button class="btn btn-primary" id="btn-save">保存</button>
+                    </div>
+                </div>
+                <form id="record-form">
+                    <div class="form-row">
+                        <input type="text" id="field-title" placeholder="标题" required>
+                    </div>
+                    <div class="form-row form-row-inline">
+                        <select id="field-category">
+                            <option value="论文">论文</option>
+                            <option value="实验">实验</option>
+                            <option value="代码">代码</option>
+                            <option value="组会">组会</option>
+                            <option value="项目">项目</option>
+                            <option value="其他" selected>其他</option>
+                        </select>
+                        <input type="date" id="field-date">
+                    </div>
+                    <div class="form-row">
+                        <input type="text" id="field-tags" placeholder="标签（用逗号分隔，如：深度学习,实验,调参）">
+                    </div>
+                    <div class="form-row">
+                        <textarea id="field-content" placeholder="内容（支持 Markdown 语法）" rows="20"></textarea>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <footer class="app-footer">
+        技术交流＋matlabpython888 &nbsp;|&nbsp; GitHub: <a href="https://github.com/zhexatu-bot" target="_blank">zhexatu-bot</a>
+    </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

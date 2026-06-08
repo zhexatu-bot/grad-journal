@@ -1,0 +1,49 @@
+{
+  "name": "grad-journal",
+  "version": "1.0.0",
+  "description": "研究生工作记录",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "node server.js",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win --dir"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "sql.js": "^1.12.0",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.grad-journal.app",
+    "productName": "研究生工作记录",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "db.js",
+      "server.js",
+      "renderer/**/*",
+      "node_modules/**/*",
+      "!data.db",
+      "!.claude",
+      "!*.py"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "研究生工作记录"
+    }
+  }
+}
